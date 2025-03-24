@@ -1,0 +1,19 @@
+<h1>Add new contact</h1>
+<form action="/contacts/" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required>
+    
+    <label for="city">City:</label>
+    <input type="text" id="city" name="address[city]" required>
+    
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="address[country]" required>
+    
+    <button type="submit">Add contact</button>
+</form>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Contact</title>
+</head>
+<body>
+    <h1>Edit Contact</h1>
+    <form action="/contacts/<%= contact._id %>?_method=PUT" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= contact.name %>" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= contact.email %>" required>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" value="<%= contact.phone %>" required>
+        
+        <label for="city">City:</label>
+        <input type="text" id="city" name="address[city]" value="<%= contact.address.city %>" required>
+        
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="address[country]" value="<%= contact.address.country %>" required>
+        
+        <button type="submit">Update Contact</button>
+    </form>
+
+    <form action="/contacts/<%= contact._id %>?_method=DELETE" method="post" style="margin-top: 20px;">
+        <button type="submit">Delete Contact</button>
+    </form>
+</body>
+</html>

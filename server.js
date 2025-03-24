@@ -4,13 +4,23 @@ const app = express();
 const env = require('dotenv').config();
 const static = require('./src/routes/static');
 const baseRoute = require('./src/routes/baseRoute');
+const methodOverride = require('method-override');
 const mongodb = require('./src/config/mongodb');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+const bodyParser = require('body-parser');
+
 
 /* ********************
 local host information
 ******************** */
 const PORT = process.env.PORT || 10001; // Fallback to 10001 if PORT is not set
 const HOST = process.env.HOST || '0.0.0.0'; // Fallback to '0.0.0.0' if HOST is not set
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+
 
 /* *******************
 connecting the MongoDB server
@@ -33,3 +43,6 @@ app.set('layout', './layouts/layout');
 app.use(static);
 app.use('/', baseRoute);
 app.use('/contacts', require('./src/routes/contactsRoute'));
+
+// swagger
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
