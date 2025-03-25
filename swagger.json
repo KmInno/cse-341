@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://0.0.0.0:1000"
+      "url": "https://cse-341-l13r.onrender.com/"
     }
   ],
   "paths": {
